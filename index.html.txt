@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+margin: 0;
+height: 100vh;
+background: linear-gradient(135deg, #ff5f6d, #ffc371);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Poppins', sans-serif;
+overflow: hidden;
+}
+
+.card {
+background: rgba(255,255,255,0.2);
+backdrop-filter: blur(12px);
+padding: 30px;
+border-radius: 25px;
+text-align: center;
+color: white;
+width: 300px;
+box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+h1 {
+font-size: 26px;
+margin-bottom: 10px;
+}
+
+p {
+font-size: 16px;
+margin-bottom: 20px;
+}
+
+button {
+padding: 12px 22px;
+font-size: 16px;
+border-radius: 30px;
+border: none;
+cursor: pointer;
+margin: 10px;
+}
+
+#yesBtn {
+background: white;
+color: #ff4d6d;
+}
+
+#noBtn {
+background: transparent;
+color: white;
+border: 2px solid white;
+position: absolute;
+}
+
+.heart {
+position: absolute;
+bottom: -20px;
+font-size: 20px;
+animation: float 5s linear infinite;
+}
+
+@keyframes float {
+from { transform: translateY(0); opacity: 1; }
+to { transform: translateY(-100vh); opacity: 0; }
+}
+
+.final {
+display: none;
+font-size: 22px;
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+<h1>Hey ❤️</h1>
+<p>Will you be my Valentine?</p>
+
+<button id="yesBtn">Yes 💘</button>
+<button id="noBtn">No 🙃</button>
+</div>
+
+<div class="card final" id="final">
+<h1>YAYYYY 💖</h1>
+<p>You just made my Valentine special 🥹💫</p>
+<p>See you soon 😉</p>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const card = document.getElementById("card");
+const final = document.getElementById("final");
+
+noBtn.addEventListener("mouseover", () => {
+const x = Math.random() * (window.innerWidth - 100);
+const y = Math.random() * (window.innerHeight - 100);
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+card.style.display = "none";
+final.style.display = "block";
+});
+
+function createHeart() {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "💖";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+document.body.appendChild(heart);
+
+setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>
